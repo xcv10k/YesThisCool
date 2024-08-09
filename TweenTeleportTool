@@ -1,0 +1,77 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+local Tool = Instance.new("Tool")
+Tool.RequiresHandle = false
+Tool.Name = "TweenTeleportTool"
+Tool.Parent = LocalPlayer.Backpack
+
+local targetPosition = Vector3.new(100, 100, 100) -- Change these coordinates to your desired location
+
+local function tweenTeleport(targetPos)
+    local tweenInfo = TweenInfo.new(
+        2, -- Duration in seconds
+        Enum.EasingStyle.Linear,
+        Enum.EasingDirection.Out,
+        0,
+        false,
+        0
+    )
+
+    local goal = {}
+    goal.CFrame = CFrame.new(targetPos)
+
+    local tween = TweenService:Create(HumanoidRootPart, tweenInfo, goal)
+    tween:Play()
+end
+
+Tool.Activated:Connect(function()
+    Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+    
+    tweenTeleport(targetPosition)
+end)
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+local Tool = Instance.new("Tool")
+Tool.RequiresHandle = false
+Tool.Name = "TweenTeleportTool"
+Tool.Parent = LocalPlayer.Backpack
+
+local targetPosition = Vector3.new(100, 100, 100) -- Change these coordinates to your desired location
+
+local function tweenTeleport(targetPos)
+    local tweenInfo = TweenInfo.new(
+        2, -- Duration in seconds
+        Enum.EasingStyle.Linear,
+        Enum.EasingDirection.Out,
+        0,
+        false,
+        0
+    )
+
+    local goal = {}
+    goal.CFrame = CFrame.new(targetPos)
+
+    local tween = TweenService:Create(HumanoidRootPart, tweenInfo, goal)
+    tween:Play()
+end
+
+Tool.Activated:Connect(function()
+    Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+    
+    tweenTeleport(targetPosition)
+end)
