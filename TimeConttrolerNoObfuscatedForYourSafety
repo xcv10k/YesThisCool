@@ -1,0 +1,18 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local LocalPlayer = Players.LocalPlayer
+
+local Tool = Instance.new("Tool")
+Tool.RequiresHandle = false
+Tool.Name = "DarkFigureX Time Controller"
+Tool.Parent = LocalPlayer.Backpack
+
+local remoteEvent = ReplicatedStorage:WaitForChild("TimeControlEvent")
+
+Tool.Activated:Connect(function()
+remoteEvent:FireServer(1)
+end)
+Tool.Deactivated:Connect(function()
+remoteEvent:FireServer(-1)
+end)
